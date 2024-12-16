@@ -1,6 +1,8 @@
 package com.example.myapplication.ui.view.mahasiswa
 
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarDuration
+import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -38,5 +40,11 @@ fun UpdateMhsView(
             }
         }
     }
+
+    Scaffold(
+        modifier = Modifier,
+        snackbarHost = { SnackbarHost(hostState = snackbarHostState)}, // Tempatkan Snackbar di Scaffold
+
+    ) {  }
 
 }
