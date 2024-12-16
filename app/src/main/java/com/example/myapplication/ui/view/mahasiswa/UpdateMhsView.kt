@@ -11,11 +11,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.monitoringapplication.ui.costumwidget.TopAppBar
 import com.example.myapplication.ui.viewmodel.PenyediaViewModel
 import com.example.myapplication.ui.viewmodel.UpdateMhsViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 @Composable
 fun UpdateMhsView(
@@ -61,7 +65,29 @@ fun UpdateMhsView(
                 .fillMaxSize()
                 .padding(padding)
                 .padding(16.dp)
-        ) {  }
+        ) {
+
+            // isi body
+
+            InsertBodyMhs(
+                uiState = uiState,
+                onValueChange = { updatedEvent ->
+                    viewModel.updateStae(updatedEvent)
+
+                },
+                onClick = {
+                    coroutineScope.launch {
+                        if (viewModel.validateFields()){
+                            viewModel.updateData()
+                            delay(600)
+                            withContext(Dispatchers.Main){
+                                onNavigate() // Navigasi di main thread
+                            }
+                        }
+                    }
+                }
+            ) { }
+        }
     }
 
 }
