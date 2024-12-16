@@ -11,6 +11,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -42,8 +43,19 @@ fun DetailMhsView(
     Scaffold(
         topBar = {
             TopAppBar(
-                judul = "Detail"
+                judul = "Detail Mahasiswa",
+                showBackButton = true,
+                onBack = onBack,
+                modifier = modifier
             )
+        },
+        floatingActionButton = {
+            FloatingActionButton(
+                onClick = {
+                    onEditClick(viewModel.detailUiState.value.detailUiEvent.nim) },
+                shape = MaterialTheme.shapes.medium,
+                modifier = Modifier.padding(16.dp)
+            ) { }
         }
     ) {  }
 }
