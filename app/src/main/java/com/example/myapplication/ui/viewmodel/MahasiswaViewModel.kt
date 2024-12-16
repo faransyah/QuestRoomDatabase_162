@@ -1,7 +1,13 @@
 package com.example.myapplication.ui.theme.viewmodel
 
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.myapplication.data.entity.Mahasiswa
 import com.example.myapplication.repository.RepositoryMhs
+import kotlinx.coroutines.launch
 
 class MahasiswaViewModel(private val repositoryMhs: RepositoryMhs) : ViewModel(){
 
@@ -29,54 +35,42 @@ class MahasiswaViewModel(private val repositoryMhs: RepositoryMhs) : ViewModel()
     }
 
     // Menyimpan data ke repository
-    fun saveData()
-    val currentEvent = uiState.mahasiswaEvent
-    if (validateFields()){
-        viewModelScope.launch{
-            try{
-                repositoryMhs.insertMhs(currentEvent.MahasiswaEntity())
-                uiState = uiState.copy(
-                    snackBarMessage = "Data berhasil disimpan",
-                    mahasiswaEvent = MahasiswaEvent(),  // Reset input form
-                    isEntryValid = FormErrorState() // Reset error state
-                )
-            }catch (e: Exception){
-                uiState = uiState.copy(
-                    snackBarMessage = "Data gagal disimpan"
-                )
+    fun saveData() {
+        val currentEvent = uiState.mahasiswaEvent
+        if (validateFields()) {
+            viewModelScope.launch {
+                try {
+                    repositoryMhs.insertMhs(currentEvent.toMahasiswaEntity())
+                    uiState = uiState.copy(
+                        snackBarMessage = "Data berhasil disimpan",
+                        mahasiswaEvent = MahasiswaEvent(),  // Reset input form
+                        isEntryValid = FormErrorState() // Reset error state
+                    )
+                } catch (e: Exception) {
+                    uiState = uiState.copy(
+                        snackBarMessage = "Data gagal disimpan"
+                    )
+                }
             }
+        } else {
+            uiState = uiState.copy(
+                snackBarMessage = "Input tidak valid, periksa kembali data anda."
+            )
         }
-    }else {
-        uiState = uiState.copy(
-            snackBarMessage = "Input tidak valid, periksa kembali data anda."
-        )
+    }
+
+    // Reset pesan Snackbar setelah ditampilkan
+    fun resetSnackbarMessage() {
+        uiState = uiState.copy(snackBarMessage = null)
     }
 }
 
-// Reset pesan Snackbar setelah ditampilkan
-fun reset SnackbarMessage() {
-    uiState = uiState.copy(snackBarmessage = null)
-}
 
-// data class Variabel yang menyimpan data input form
-data class MahasiswaEvent(
-    val nim: String = "",
-    val nama: String = "",
-    val jenisKelamin: String = "",
-    val alamat: String = "",
-    val kelas: String = "",
-    val angkatan: String = "",
-)
 
-// Menyimpan input fomr kedalam entity
-fun MahasiswaEvent.toMahasiswaEntity(): Mahasiswa = Mahasiswa(
-    nim = nim,
-    nama = nama,
-    jenisKelamin = jenisKelamin,
-    alamat = alamat,
-    kelas = kelas,
-    angkatan = angkatan
-)
+
+
+
+
 
 data class MhsUIState(
     val mahasiswaEvent: MahasiswaEvent = MahasiswaEvent(),
@@ -90,10 +84,29 @@ data class FormErrorState(
     val jenisKelamin: String?= null,
     val alamat: String?= null,
     val kelas: String?= null,
-    val angkatan: String?= null,
+    val angkatan: String? = null
 ){
-    fun isValid() Boolean{
-        return nim == null && nama == null && jenisKelamin == null &&
-                alamat == null && kelas == null && angkatan == null
-    }
+   fun isValid(): Boolean {
+       return nim == null && nama == null && jenisKelamin == null &&
+               alamat == null && kelas == null && angkatan == null
+   }
 }
+// data class Variabel yang menyimpan data input form
+data class MahasiswaEvent(
+    val nim: String= "",
+    val nama: String= "",
+    val jenisKelamin: String= "",
+    val alamat: String= "",
+    val kelas: String= "",
+    val angkatan: String= "",
+)
+
+// Menyimpan input fomr kedalam entity
+fun MahasiswaEvent.toMahasiswaEntity(): Mahasiswa = Mahasiswa(
+    nim = nim,
+    nama = nama,
+    jeniskelamin = jenisKelamin,
+    alamat = alamat,
+    kelas = kelas,
+    angkatan = angkatan
+)

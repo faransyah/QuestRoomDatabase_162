@@ -13,7 +13,7 @@ import com.example.myapplication.ui.view.mahasiswa.InsertMhsView
 @Composable
 fun PengelolaHalaman(
     navController: NavHostController = rememberNavController(),
-    modifier: Modifier = Modifier
+    modifier : Modifier = Modifier
 ){
     NavHost(navController = navController, startDestination = DestinasiInsert.route) {
         composable(

@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.CreationExtras
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
+import com.example.myapplication.KrsApp
 import com.example.myapplication.ui.theme.viewmodel.MahasiswaViewModel
 
 object PenyediaViewModel{
@@ -11,7 +12,7 @@ object PenyediaViewModel{
     val Factory = viewModelFactory {
         initializer {
             MahasiswaViewModel(
-                krsApp().ContainerApp.repositoryMhs
+                krsApp().containerApp.repositoryMhs
             )
         }
     }
