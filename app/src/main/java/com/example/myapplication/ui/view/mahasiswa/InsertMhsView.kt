@@ -228,9 +228,9 @@ fun FormMahaiswa(
             modifier = Modifier.fillMaxWidth(),
             value = mahasiswaEvent.angkatan, onValueChange = {
                 onValueChange(mahasiswaEvent.copy(angkatan = it))},
-            label = {Text("Alamat")},
+            label = {Text("Angkatan")},
             isError = errorState.angkatan   != null,
-            placeholder = { Text("Masukkan Alamaat")},
+            placeholder = { Text("Masukkan Angkatan")},
         )
         Text(
             text = errorState.angkatan ?: "", color = Color.Red
