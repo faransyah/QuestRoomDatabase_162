@@ -12,6 +12,7 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -22,10 +23,30 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.monitoringapplication.ui.costumwidget.TopAppBar
 import com.example.myapplication.data.entity.Mahasiswa
 import com.example.myapplication.ui.theme.viewmodel.toMahasiswaEntity
+import com.example.myapplication.ui.viewmodel.DetailMhsViewModel
 import com.example.myapplication.ui.viewmodel.DetailUiState
+import com.example.myapplication.ui.viewmodel.PenyediaViewModel
 
+@Composable
+fun DetailMhsView(
+    modifier: Modifier = Modifier,
+    viewModel: DetailMhsViewModel = viewModel(factory = PenyediaViewModel.Factory),
+    onBack: () -> Unit = {},
+    onEditClick: (String) -> Unit ={},
+    onDeleteClick: () -> Unit = {}
+){
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                judul = "Detail"
+            )
+        }
+    ) {  }
+}
 
 @Composable
 fun BodyDetailMhs(
