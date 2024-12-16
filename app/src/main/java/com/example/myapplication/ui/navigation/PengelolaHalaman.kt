@@ -13,6 +13,7 @@ import com.example.myapplication.ui.view.mahasiswa.DestinasiInsert
 import com.example.myapplication.ui.view.mahasiswa.DetailMhsView
 import com.example.myapplication.ui.view.mahasiswa.HomeMhsView
 import com.example.myapplication.ui.view.mahasiswa.InsertMhsView
+import com.example.myapplication.ui.view.mahasiswa.UpdateMhsView
 
 @Composable
 fun PengelolaHalaman(
@@ -84,6 +85,16 @@ fun PengelolaHalaman(
                 }
             )
         ) {
+
+            UpdateMhsView(
+                onBack = {
+                    navController.popBackStack()
+                },
+                onNavigate = {
+                    navController.popBackStack()
+                },
+                modifier = modifier,
+            )
 
         }
     }

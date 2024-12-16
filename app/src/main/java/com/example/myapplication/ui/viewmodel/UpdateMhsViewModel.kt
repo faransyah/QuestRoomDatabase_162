@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.myapplication.data.entity.Mahasiswa
 import com.example.myapplication.repository.RepositoryMhs
-import com.example.myapplication.ui.navigation.DestinasiEdit
 import com.example.myapplication.ui.navigation.DestinasiUpdate
 import com.example.myapplication.ui.theme.viewmodel.FormErrorState
 import com.example.myapplication.ui.theme.viewmodel.MahasiswaEvent
@@ -36,7 +35,7 @@ class UpdateMhsViewModel(
                 .toUIStateMhs()
         }
     }
-    fun updateStae (mahasiswaViewModel: MahasiswaViewModel){
+    fun updateStae (mahasiswaEvent: MahasiswaEvent){
         updateUIState = updateUIState.copy(
             mahasiswaEvent = mahasiswaEvent,
         )
