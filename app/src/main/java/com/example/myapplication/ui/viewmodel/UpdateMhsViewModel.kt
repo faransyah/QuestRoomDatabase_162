@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.myapplication.data.entity.Mahasiswa
 import com.example.myapplication.repository.RepositoryMhs
 import com.example.myapplication.ui.navigation.DestinasiEdit
+import com.example.myapplication.ui.navigation.DestinasiUpdate
 import com.example.myapplication.ui.theme.viewmodel.FormErrorState
 import com.example.myapplication.ui.theme.viewmodel.MahasiswaEvent
 import com.example.myapplication.ui.theme.viewmodel.MahasiswaViewModel
@@ -24,7 +25,7 @@ class UpdateMhsViewModel(
     var updateUIState by mutableStateOf(MhsUIState())
         private set
 
-    private val _nim: String = checkNotNull(savedStateHandle[DestinasiEdit.NIM])
+    private val _nim: String = checkNotNull(savedStateHandle[DestinasiUpdate.NIM])
 
 
     init {
