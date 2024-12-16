@@ -10,6 +10,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.myapplication.ui.view.mahasiswa.DestinasiInsert
+import com.example.myapplication.ui.view.mahasiswa.DetailMhsView
 import com.example.myapplication.ui.view.mahasiswa.HomeMhsView
 import com.example.myapplication.ui.view.mahasiswa.InsertMhsView
 
@@ -58,6 +59,21 @@ fun PengelolaHalaman(
                 }
             )
         ) {
+            val nim = it.arguments?.getString(DestinasiDetail.NIM)
+            nim?.let { nim ->
+                DetailMhsView(
+                    onBack = {
+                        navController.popBackStack()
+                    },
+                    onEditClick = {
+                        navController.popBackStack()
+                    },
+                    modifier = modifier,
+                    onDeleteClick = {
+                        navController.popBackStack()
+                    }
+                )
+            }
 
         }
     }
