@@ -11,7 +11,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import com.example.myapplication.data.entity.Mahasiswa
 
+@Composable
+fun ItemDetailMhs(
+    modifier: Modifier = Modifier,
+    mahasiswa: Mahasiswa
+){
+
+}
 @Composable
 fun ComponentDetailMhs(
     modifier: Modifier = Modifier,
