@@ -15,6 +15,7 @@ import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -26,8 +27,28 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.monitoringapplication.ui.costumwidget.TopAppBar
+import com.example.myapplication.ui.viewmodel.HomeMhsViewModel
 import com.example.myapplication.ui.viewmodel.HomeUiState
+import com.example.myapplication.ui.viewmodel.PenyediaViewModel
 import kotlinx.coroutines.launch
+
+
+@Composable
+fun HomeMhsView(
+    viewModel: HomeMhsViewModel = viewModel(factory = PenyediaViewModel.Factory),
+    onAddMhs: () -> Unit = {},
+    onDetailClick: Modifier = Modifier
+){
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                jydy
+            )
+        }
+    ) {  }
+}
 
 @Composable
 fun BodyHomeMhsView(
@@ -69,6 +90,17 @@ fun BodyHomeMhsView(
                     modifier = Modifier.padding(16.dp)
                 )
             }
+        }
+        else -> {
+            // Menampilkan daftar mahasiswa
+            ListMahasiswa(
+                listMhs = homeUiState.listMhs,
+                onClick = {
+                    onClick(it)
+                    println(it)
+                },
+                modifier = modifier
+            )
         }
 
     }
