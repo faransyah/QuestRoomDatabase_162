@@ -179,6 +179,7 @@ Card(
     }
 }
 }
+
 @Composable
 fun ComponentDetailMhs(
     modifier: Modifier = Modifier,
@@ -201,6 +202,7 @@ fun ComponentDetailMhs(
          )
     }
 }
+
 
 @Composable
 private fun DeleteConFirmationDialog(
