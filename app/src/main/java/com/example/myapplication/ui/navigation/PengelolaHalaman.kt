@@ -25,7 +25,7 @@ fun PengelolaHalaman(
         ) {
             HomeMhsView(
                 onDetailClick = { nim ->
-                    navController.navigate("${DestinationDetail.route}/$nim")
+                    navController.navigate("${DestinasiDetail.route}/$nim")
                     println(
                         "PengelolaHalaman: nim = $nim"
                     )
@@ -77,9 +77,9 @@ fun PengelolaHalaman(
 
         }
         composable(
-            DestinasiEdit.routesWithArg,
+            DestinasiUpdate.routesWithArg,
             arguments = listOf(
-                navArgument(DestinasiEdit.NIM){
+                navArgument(DestinasiUpdate.NIM){
                     type = NavType.StringType
                 }
             )
