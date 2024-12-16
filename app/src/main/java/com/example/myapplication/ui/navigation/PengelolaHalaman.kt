@@ -66,7 +66,7 @@ fun PengelolaHalaman(
                         navController.popBackStack()
                     },
                     onEditClick = {
-                        navController.popBackStack()
+                        navController.navigate("${DestinasiUpdate.route}/$it")
                     },
                     modifier = modifier,
                     onDeleteClick = {

@@ -73,21 +73,21 @@ fun UpdateMhsView(
             InsertBodyMhs(
                 uiState = uiState,
                 onValueChange = { updatedEvent ->
-                    viewModel.updateStae(updatedEvent)
-
+                    viewModel.updateState(updatedEvent)
                 },
                 onClick = {
                     coroutineScope.launch {
-                        if (viewModel.validateFields()){
+                        if (viewModel.validateFields()) {
                             viewModel.updateData()
                             delay(600)
-                            withContext(Dispatchers.Main){
+                            withContext(Dispatchers.Main) {
                                 onNavigate() // Navigasi di main thread
                             }
                         }
                     }
                 }
             )
+
         }
     }
 

@@ -2,6 +2,7 @@ package com.example.myapplication.ui.viewmodel
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -20,6 +21,7 @@ class UpdateMhsViewModel(
     savedStateHandle: SavedStateHandle,
     private val repositoryMhs: RepositoryMhs
 ): ViewModel() {
+
     var updateUIState by mutableStateOf(MhsUIState())
         private set
 
@@ -34,7 +36,7 @@ class UpdateMhsViewModel(
                 .toUIStateMhs()
         }
     }
-    fun updateStae (mahasiswaEvent: MahasiswaEvent){
+    fun updateState (mahasiswaEvent: MahasiswaEvent){
         updateUIState = updateUIState.copy(
             mahasiswaEvent = mahasiswaEvent,
         )
