@@ -37,6 +37,18 @@ Card(
         ComponentDetailMhs(judul = "NIM", isinya = mahasiswa.nim)
         Spacer(modifier = Modifier.padding(4.dp))
 
+        ComponentDetailMhs(judul = "Nama", isinya = mahasiswa.nama)
+        Spacer(modifier = Modifier.padding(4.dp))
+        ComponentDetailMhs(judul = "Alamat", isinya = mahasiswa.alamat)
+        Spacer(modifier = Modifier.padding(4.dp))
+        ComponentDetailMhs(judul = "Jenis Kelamin", isinya = mahasiswa.jeniskelamin)
+        Spacer(modifier = Modifier.padding(4.dp))
+        ComponentDetailMhs(judul = "Kelas", isinya = mahasiswa.kelas)
+        Spacer(modifier = Modifier.padding(4.dp))
+        ComponentDetailMhs(judul = "Angkatan", isinya = mahasiswa.angkatan)
+        Spacer(modifier = Modifier.padding(4.dp))
+
+
     }
 }
 }
